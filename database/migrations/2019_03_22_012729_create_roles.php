@@ -15,16 +15,19 @@ class CreateRoles extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('slug'); //web-developer
-            $table->string('name'); //Web Developer
+            $table->string('slug');
+            $table->string('name');
             $table->timestamps();
         });
 
         Schema::create('permissions', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('slug'); //edit-posts
-            $table->string('name'); // edit posts
+            $table->string('slug');
+            $table->string('name');
+            $table->integer('task_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');
         });
     }
 

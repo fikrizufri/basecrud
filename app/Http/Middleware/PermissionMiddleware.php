@@ -3,9 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use App\Permissions\HasPermissionsTrait;
 
-class RoleMiddleware
+class PermissionMiddleware
 {
     /**
      * Handle an incoming request.
@@ -14,12 +13,9 @@ class RoleMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next, $role, $permission = null)
+    public function handle($request, Closure $next, $permission)
     {
-        if (!$request->user()->can($role)) {
-            abort(404);
-        }
-        if ($permission !== null && !$request->user()->can($permission)) {
+        if (!$request->user()->can($permission)) {
             abort(404);
         }
         return $next($request);

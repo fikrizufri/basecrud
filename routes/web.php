@@ -23,6 +23,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 //         return 'Welcome Admin';
 //     });
 // });
-Route::group(['namespace' => 'Administrator'], function () {
+
+
+Route::group(['namespace' => 'Administrator', 'middleware' => 'auth'], function () {
     Route::get('/user', 'UserController@index')->name('user');
+    
+    Route::resource('/permission', 'PermissionController');
 });

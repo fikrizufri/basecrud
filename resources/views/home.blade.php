@@ -13,12 +13,12 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    @role('admin')
+                    @role('superadmin')
 
                     <h1>Hello from the admin</h1>
                     
                     @endrole
-                    @can('delete-users')
+                    @can('view-users')
                         bisa gila
                     @endcan
                     You are logged in!
