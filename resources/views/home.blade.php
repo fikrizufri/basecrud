@@ -13,7 +13,14 @@
                             {{ session('status') }}
                         </div>
                     @endif
+                    @role('admin')
 
+                    <h1>Hello from the admin</h1>
+                    
+                    @endrole
+                    @can('delete-users')
+                        bisa gila
+                    @endcan
                     You are logged in!
                 </div>
             </div>
