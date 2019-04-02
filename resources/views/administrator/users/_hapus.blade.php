@@ -2,16 +2,16 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title">Hapus Hak Akses {{ ucfirst($user->name) }}</h5>
+            <h5 class="modal-title">Hapus User {{ ucfirst($user->name) }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
             </div>
             <div class="modal-body">
-                <p>Apakah anda yakin ingin menghapus Hak Akses ini?</p>
+                <p>Apakah anda yakin ingin menghapus User ini?</p>
                 <div class="db-list">
                     <dl>
-                        <dt>Hak Akses</dt>
+                        <dt>User</dt>
                         <dd>{{ $user->name }}</dd>
 
                         <dt>Tanggal Dibuat</dt>

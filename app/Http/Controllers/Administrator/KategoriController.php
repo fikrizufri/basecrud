@@ -48,8 +48,13 @@ class KategoriController extends Controller
             'name' => 'required|unique:kategoris'
         ], $messages);
 
+        $name = request()->input('name');
+        $slug = str_slug($name);
+
         $kategori = new Kategori;
-        $kategori->name = request()->input('name');
+        $kategori->name = $name;
+        $kategori->slug = $slug;
+        $kategori->description = request()->input('description');
         $kategori->save();
         return redirect()->route('kategori.index')->with('message', 'Kategori Berhasil ditambahkan');
     }
@@ -100,9 +105,12 @@ class KategoriController extends Controller
 
 
         $name = request()->input('name');
-        
-        $kategori = kategori::find($id);
+        $slug = str_slug($name);
+
+        $kategori = Kategori::find($id);
         $kategori->name = $name;
+        $kategori->slug = $slug;
+        $kategori->description = request()->input('description');
         $kategori->update();
         return redirect()->route('kategori.index')->with('message', 'Kategori Berhasil diubah');
     }

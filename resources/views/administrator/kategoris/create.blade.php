@@ -24,6 +24,22 @@
                         @endif
                     </div>
                     <div class="form-group">
+                        <div>
+                                <label for="description" class=" form-control-label">Description Kategori</label>
+                        </div>
+                        <div>
+                            <input type="text" name="description" placeholder="input description" class="form-control  {{$errors->has('description') ? 'form-control is-invalid' : 'form-control'}}">
+                        </div>
+                        @if ($errors->has('description'))
+                        <div class=" container-fluid alert alert-warning alert-dismissible fade show" role="alert">
+                                {{ $errors->first('description')}}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        @endif
+                    </div>
+                    <div class="form-group">
                         <button type="submit" class="btn btn-success"><i class="fa fa-save" aria-hidden="true"></i></button>
                         <a class="btn btn-primary" href="{{route('kategori.index')}}" role="button"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
                     </div>

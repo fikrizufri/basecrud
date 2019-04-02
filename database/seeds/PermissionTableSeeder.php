@@ -22,18 +22,19 @@ class PermissionTableSeeder extends Seeder
         $superadmin = Role::where('slug', 'superadmin')->first();
         $admin = Role::where('slug', 'admin')->first();
 
+        $dashboardTask = Task::where('slug', 'dashboard')->first();
         $user = Task::where('slug', 'user')->first();
         $hakases = Task::where('slug', 'roles')->first();
         $task = Task::where('slug', 'tasks')->first();
         $menu = Task::where('slug', 'menu')->first();
 
-        $createUsers = new Permission();
-        $createUsers->slug = 'create-user';
-        $createUsers->name = 'Create User';
-        $createUsers->task_id = $user->id;
-        $createUsers->save();
-        $createUsers->roles()->attach($superadmin);
-        $createUsers->roles()->attach($admin);
+        $dashboard = new Permission();
+        $dashboard->slug = 'view-dashboard';
+        $dashboard->name = 'View Dashboard';
+        $dashboard->task_id = $dashboardTask->id;
+        $dashboard->save();
+        $dashboard->roles()->attach($superadmin);
+        $dashboard->roles()->attach($admin);
 
         $viewUsers = new Permission();
         $viewUsers->slug = 'view-user';
@@ -42,6 +43,14 @@ class PermissionTableSeeder extends Seeder
         $viewUsers->save();
         $viewUsers->roles()->attach($superadmin);
         $viewUsers->roles()->attach($admin);
+
+        $createUsers = new Permission();
+        $createUsers->slug = 'create-user';
+        $createUsers->name = 'Create User';
+        $createUsers->task_id = $user->id;
+        $createUsers->save();
+        $createUsers->roles()->attach($superadmin);
+        $createUsers->roles()->attach($admin);
 
         $editUsers = new Permission();
         $editUsers->slug = 'edit-user';
@@ -66,14 +75,6 @@ class PermissionTableSeeder extends Seeder
         $editUsers->save();
         $editUsers->roles()->attach($superadmin);
         $editUsers->roles()->attach($admin);
-
-        $createRoles = new Permission();
-        $createRoles->slug = 'create-hak-akses';
-        $createRoles->name = 'Create hak-akses';
-        $createRoles->task_id = $hakases->id;
-        $createRoles->save();
-        $createRoles->roles()->attach($superadmin);
-        $createRoles->roles()->attach($admin);
         
         $viewRoles = new Permission();
         $viewRoles->slug = 'view-hak-akses';
@@ -82,6 +83,14 @@ class PermissionTableSeeder extends Seeder
         $viewRoles->save();
         $viewRoles->roles()->attach($superadmin);
         $viewRoles->roles()->attach($admin);
+
+        $createRoles = new Permission();
+        $createRoles->slug = 'create-hak-akses';
+        $createRoles->name = 'Create hak-akses';
+        $createRoles->task_id = $hakases->id;
+        $createRoles->save();
+        $createRoles->roles()->attach($superadmin);
+        $createRoles->roles()->attach($admin);
 
         $editRoles = new Permission();
         $editRoles->slug = 'edit-hak-akses';
@@ -107,14 +116,6 @@ class PermissionTableSeeder extends Seeder
         $deleteRoles->roles()->attach($superadmin);
         $deleteRoles->roles()->attach($admin);
 
-        $createTask = new Permission();
-        $createTask->slug = 'create-modul';
-        $createTask->name = 'Create modul';
-        $createTask->task_id = $task->id;
-        $createTask->save();
-        $createTask->roles()->attach($superadmin);
-        $createTask->roles()->attach($admin);
-
         $viewTask = new Permission();
         $viewTask->slug = 'view-modul';
         $viewTask->name = 'View modul';
@@ -122,6 +123,14 @@ class PermissionTableSeeder extends Seeder
         $viewTask->save();
         $viewTask->roles()->attach($superadmin);
         $viewTask->roles()->attach($admin);
+
+        $createTask = new Permission();
+        $createTask->slug = 'create-modul';
+        $createTask->name = 'Create modul';
+        $createTask->task_id = $task->id;
+        $createTask->save();
+        $createTask->roles()->attach($superadmin);
+        $createTask->roles()->attach($admin);
 
         $editTask = new Permission();
         $editTask->slug = 'edit-modul';
@@ -147,14 +156,6 @@ class PermissionTableSeeder extends Seeder
         $deleteTask->roles()->attach($superadmin);
         $deleteTask->roles()->attach($admin);
 
-        $createmenu = new Permission();
-        $createmenu->slug = 'create-menu';
-        $createmenu->name = 'Create menu';
-        $createmenu->task_id = $menu->id;
-        $createmenu->save();
-        $createmenu->roles()->attach($superadmin);
-        $createmenu->roles()->attach($admin);
-
         $viewmenu = new Permission();
         $viewmenu->slug = 'view-menu';
         $viewmenu->name = 'View menu';
@@ -162,6 +163,14 @@ class PermissionTableSeeder extends Seeder
         $viewmenu->save();
         $viewmenu->roles()->attach($superadmin);
         $viewmenu->roles()->attach($admin);
+
+        $createmenu = new Permission();
+        $createmenu->slug = 'create-menu';
+        $createmenu->name = 'Create menu';
+        $createmenu->task_id = $menu->id;
+        $createmenu->save();
+        $createmenu->roles()->attach($superadmin);
+        $createmenu->roles()->attach($admin);
 
         $editmenu = new Permission();
         $editmenu->slug = 'edit-menu';

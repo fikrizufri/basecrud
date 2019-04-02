@@ -20,6 +20,7 @@
                             <tr>
                                 <th width="50" scope="col" class="align-middle text-center">#</th>
                                 <th scope="col" class="align-middle text-center">Nama Kategori</th>
+                                <th scope="col" class="align-middle text-center">Deskripsi</th>
                                 <th width="155" class="align-middle text-center">Aksi</th>
                             </tr>
                         </thead>
@@ -28,11 +29,11 @@
                             <tr>
                                 <th class="align-middle text-center">{{ $index+1 }}</th>
                                 <td scope="row" class="align-middle text-center">{{ ucfirst($kategori->name) }}</td>
+                                <td scope="row" class="align-middle text-center">{{ ucfirst($kategori->description) }}</td>
                                 <td>
                                     @can('view-kategori')
                                         <a class="btn btn-info btn-sm" href="{{ route('kategori.show', $kategori->id) }}" role="button"><i class="fa fa-search" aria-hidden="true"></i></a>
-                                    @endcan
-                                    @if ($kategori->title != 'User' && $kategori->title != 'Roles' && $kategori->title != 'kategoris')
+                                    @endcan                                    
                                     @can('edit-kategori')
                                     <a class="btn btn-primary btn-sm" href="{{ route('kategori.edit', $kategori->id) }}" role="button"><i class="fas fa-edit" aria-hidden="true"></i></a>
                                 @endcan
@@ -42,12 +43,11 @@
                                     </button>
                                     @include('administrator.kategoris._hapus')
                                 @endcan   
-                                    @endif
                                 </td>
                             </tr>
                             @empty
                             <tr>
-                                <td colspan="2">Daftar kategori tidak ada</td>
+                                <td colspan="4">Daftar Kategori tidak ada</td>
                             </tr>
                             @endforelse
                         </tbody>

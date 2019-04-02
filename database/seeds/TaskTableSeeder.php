@@ -17,6 +17,12 @@ class TaskTableSeeder extends Seeder
 
     public function TaskSeeder()
     {
+        $dashboard = new Task();
+        $dashboard->title = 'Dashboard';
+        $dashboard->slug = str_slug($dashboard->title);
+        $dashboard->description = 'Manajemen Dashboard';
+        $dashboard->save();
+
         $task = new Task();
         $task->title = 'User';
         $task->slug = str_slug($task->title);

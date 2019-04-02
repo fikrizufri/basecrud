@@ -32,8 +32,8 @@
                                     <th scope="col" colspan="5">Hak Akses</th>
                                 </tr>
                                 <tr>
-                                    <th scope="col">Tambah</th>
                                     <th scope="col">Lihat</th>
+                                    <th scope="col">Tambah</th>
                                     <th scope="col">Edit</th>
                                     <th scope="col">Update</th>
                                     <th scope="col">Hapus</th>

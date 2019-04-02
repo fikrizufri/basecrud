@@ -34,7 +34,7 @@
                                     @can('view-modul')
                                         <a class="btn btn-info btn-sm" href="{{ route('task.show', $task->id) }}" role="button"><i class="fa fa-search" aria-hidden="true"></i></a>
                                     @endcan
-                                    @if ($task->title != 'User' && $task->title != 'Roles' && $task->title != 'Tasks')
+                                    @if ($task->title != 'Dashboard' && $task->title != 'User' && $task->title != 'Roles' && $task->title != 'Tasks')
                                     @can('edit-modul')
                                     <a class="btn btn-primary btn-sm" href="{{ route('task.edit', $task->id) }}" role="button"><i class="fas fa-edit" aria-hidden="true"></i></a>
                                 @endcan
