@@ -17,6 +17,7 @@ class CreateRoles extends Migration
             $table->increments('id');
             $table->string('slug');
             $table->string('name');
+            $table->softDeletes();
             $table->timestamps();
         });
 
@@ -25,6 +26,7 @@ class CreateRoles extends Migration
             $table->string('slug');
             $table->string('name');
             $table->integer('task_id')->unsigned();
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('task_id')->references('id')->on('tasks')->onDelete('cascade');

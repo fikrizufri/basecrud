@@ -18,13 +18,27 @@ class TaskTableSeeder extends Seeder
     public function TaskSeeder()
     {
         $task = new Task();
-        $task->title = 'Kelola User';
-        $task->descption = 'Manajemen User';
-        $task->save(); 
+        $task->title = 'User';
+        $task->slug = str_slug($task->title);
+        $task->description = 'Manajemen User';
+        $task->save();
 
-        $task = new Task();
-        $task->title = 'Kelola Hak Akses';
-        $task->descption = 'Manajemen Hak Akses';
-        $task->save(); 
+        $taskRole = new Task();
+        $taskRole->title = 'Roles';
+        $taskRole->slug = str_slug($taskRole->title);
+        $taskRole->description = 'Manajemen Hak Akses';
+        $taskRole->save();
+
+        $taskRole = new Task();
+        $taskRole->title = 'Tasks';
+        $taskRole->slug = str_slug($taskRole->title);
+        $taskRole->description = 'Manajemen Hak Modul';
+        $taskRole->save();
+
+        $taskRole = new Task();
+        $taskRole->title = 'Menu';
+        $taskRole->slug = str_slug($taskRole->title);
+        $taskRole->description = 'Manajemen Menu';
+        $taskRole->save();
     }
 }

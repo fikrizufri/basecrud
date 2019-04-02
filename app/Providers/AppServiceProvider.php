@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Models\Menu;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -13,7 +14,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        view()->composer('layouts.menu', function ($view) {
+            $menus = Menu::where('parent_id', 0)->get();
+            $view->with([
+                    'menus' => $menus,
+                ]);
+        });
     }
 
     /**

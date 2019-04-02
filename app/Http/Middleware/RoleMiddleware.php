@@ -16,11 +16,11 @@ class RoleMiddleware
      */
     public function handle($request, Closure $next, $role, $permission = null)
     {
-        if (!$request->user()->can($role)) {
-            abort(404);
+        if (!$request->user()->hasRole($role)) {
+            abort(503);
         }
         if ($permission !== null && !$request->user()->can($permission)) {
-            abort(404);
+            abort(503);
         }
         return $next($request);
     }

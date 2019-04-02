@@ -65,4 +65,14 @@ trait HasPermissionsTrait
     {
         return Permission::whereIn('slug', $permissions)->get();
     }
+    
+    public function getDisplayRoleAttribute()
+    {
+        if($this->roles){
+            foreach ($this->roles()->get() as $item) {
+                $name = $item->name;
+            }
+        }
+        return $name;
+    }
 }

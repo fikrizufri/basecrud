@@ -1,23 +1,27 @@
 @extends('layouts.app')
 @section('content')
-<div class="container-fluid">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
+        <form action="{{route('permission.update', $role->id)}}" method="post" enctype="multipart/form-data">
+                {{ csrf_field() }}
+                {{ method_field('PUT') }}
             <div class="card">
                 <div class="card-header">Edit Hak Akses</div>
                 <div class="card-body" style="max-height:65vh; overflow-y:auto;">
-                    <form action="" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <div>
                             <label for="Name" class=" form-control-label">Name</label>
                         </div>
                         <div>
-                            <input type="text" id="text-input" name="name" placeholder="Judul Post" class="form-control  {{$errors->has('name') ? 'form-control is-invalid' : 'form-control'}}" value="{{ $role->name }}">
+                            <input type="text" id="text-input" name="name" placeholder="Name Roles" class="form-control  {{$errors->has('name') ? 'form-control is-invalid' : 'form-control'}}" value="{{ $role->name }}">
                         </div>
                         @if ($errors->has('name'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('name') }}</strong>
-                            </span>
+                        <div class=" container-fluid alert alert-warning alert-dismissible fade show" role="alert">
+                                {{ $errors->first('name')}}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                         @endif
                     </div>
                     <div class="form-group">
@@ -28,7 +32,7 @@
                                     <th scope="col" colspan="5">Hak Akses</th>
                                 </tr>
                                 <tr>
-                                    <th scope="col">Buat</th>
+                                    <th scope="col">Tambah</th>
                                     <th scope="col">Lihat</th>
                                     <th scope="col">Edit</th>
                                     <th scope="col">Update</th>
@@ -38,15 +42,14 @@
                             <tbody>
                                 @foreach ($tasks as $task)
                                 <tr>
-                                    <td scope="row">{{ $task->title }}</td>
+                                    <td scope="row">{{ $task->description }}</td>
                                     @foreach ($task->permissions as $permission)
                                         <td>
                                             @if(in_array($permission->name, $izin))
-                                            <input type="checkbox" value="" checked></label>
+                                            <input type="checkbox" name="izin_akses[]" value="{{$permission->id}}" checked></label>
                                             @else
-                                            <input type="checkbox" value=""></label>
+                                            <input type="checkbox" name="izin_akses[]" value="{{$permission->id}}"></label>
                                             @endif
-
                                         </td>
                                     @endforeach
                                 </tr>
@@ -55,15 +58,15 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success"><i class="fa fa-save" aria-hidden="true"></i></button>
+                        <a class="btn btn-primary" href="{{route('permission.index')}}" role="button"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-success"><i class="fa fa-save" aria-hidden="true"></i></button>
-            </div>
-        </form>
+            </form>
         </div>
     </div>
-</div>
 @endsection
 
 @push('scripts')
